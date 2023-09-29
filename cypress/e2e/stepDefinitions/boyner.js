@@ -4,7 +4,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
 })
 
-Given('Ebebek sitesine git', () => {
+Given('Boyner sitesine git', () => {
     cy.visit('https://www.boyner.com.tr')
 });
 
