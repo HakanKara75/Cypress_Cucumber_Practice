@@ -1,4 +1,4 @@
-Feature: Ebebek
+Feature: Boyner
 	Scenario: Boyner
 		Given Boyner sitesine git
         When arama kutusuna "kot pantalon" yaz
