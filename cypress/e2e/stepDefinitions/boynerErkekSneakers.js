@@ -3,7 +3,7 @@ import { Given, When, Then, And, Scenario } from "cypress-cucumber-preprocessor/
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
 })
-
+    cy.viewport(1500, 800)
 
     let data;
     before(() => {
