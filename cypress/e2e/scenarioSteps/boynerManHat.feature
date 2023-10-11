@@ -1,8 +1,7 @@
 Feature: Hat
 Scenario: Select Hat
 	Given Go to Boyner
-    When wait on the login button
-    And click login button
+    When click login button
     And enter email
     And enter password
     And click to login

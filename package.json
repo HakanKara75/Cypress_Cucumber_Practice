@@ -9,6 +9,7 @@
   "author": "hakan kara",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.1.0",
     "cypress": "^13.3.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-mochawesome-reporter": "^3.6.0"
