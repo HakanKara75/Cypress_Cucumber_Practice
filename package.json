@@ -17,5 +17,8 @@
     "nonGlobalStepDefinitions": false,
     "nonGlobalStepBaseDir": "cypress/e2e/step_definitions",
     "stepDefinitions": "cypress/e2e"
+  },
+  "dependencies": {
+    "@cypress/chrome-recorder": "^2.3.1"
   }
 }
