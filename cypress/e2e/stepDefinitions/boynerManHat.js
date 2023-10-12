@@ -41,7 +41,7 @@ When('click login button',() =>  {
 And('enter email',() => {
 
    // const email = faker.internet.email()
-   
+   cy.wait(3000)
     cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(data.email)
 
  //cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(mail.email())
@@ -81,6 +81,7 @@ And('Click the Man menu', () => {
   })
 
   And('Select the Puma mark Hat', () => {
+    cy.wait(3000)
     cy.get('[data-key="4"] > .product-item_root__6ZVGl > .product-item_content__9CfBp > a > .product-item_brand__LFImW').click({force: true})
  
     cy.get('[data-key="4"] > .product-item_root__6ZVGl > .product-item_content__9CfBp > a > .product-item_brand__LFImW').invoke('text').then((text) => {
@@ -91,14 +92,14 @@ And('Click the Man menu', () => {
   })
 
   And('Add to cart', () => {
-    
+    cy.wait(3000)
     cy.get('.login-button_box__dnyuU').click({force: true})
  
   })
 
   And('go to cart', () => {
     cy.get('.product-added-card_cardBoxRight__r4cGW > .login-button_box__dnyuU').click({force: true})
- 
+    cy.wait(3000)
   })
   Then('verify added', () => {
     let actualProduct;
