@@ -1,4 +1,5 @@
 import { Given, When, Then, And, Scenario } from "cypress-cucumber-preprocessor/steps";
+import { boynerMan } from "../../pages/boynerMan";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
@@ -20,26 +21,24 @@ Given('Go to Boyner', () => {
 })
 
 And ('Click on user icon', () =>{
-    cy.get(':nth-child(1) > .header-top_cardIcon__CBiyn > .sc-fqkvVR').click()
+   boynerMan.elements.userIcon().click()
 })
 
 
 And ('enter email address', () =>{
-    cy.get("input[placeholder='E-posta adresin").type(data.email)
+    boynerMan.login(data.email, data.password)
 })
 
 And ('enter password', () =>{
-    cy.get(':nth-child(2) > :nth-child(1) > .input_inputGrid__UFWmw').type(data.password)
+   
 })
 
 And ('Click on Giriş Yap Button', () =>{
-    cy.get("button[class='login-button_box__dnyuU login-form_loginSubmitButton__PhqyF").click()
+    boynerMan.elements.girisYap().click()
 })
 
 And('arama kutusuna ceket yaz', (searchText)=>{
-    cy.get('.header-top_headerTopSearchInputText__3artV').click()
-    cy.get('.search-suggestion_inputBox__2T6la > input').type("ceket")
-    cy.get('.search-suggestion_searchBtn__Oemqg > .sc-fqkvVR').click();
+    boynerMan.searchProduct(searchText )
 })
 
 
@@ -52,13 +51,13 @@ When('erkek menusune bas', () =>{
 
 
 And('onerilen siralama tikla',() => {
-    cy.get('.product-list-options_selectedOption__STacx').click({force:true});
+    boynerMan.elements.onerilenSiralam().click({force:true});
     
 })
 
 And('onerilen siralamayi fiyat dusukten yuksege yap',() => {
    
-    cy.get('.product-list-options_options__xWUw0 > :nth-child(2) > :nth-child(1)').click({force:true});
+    boynerMan.elements.dusuktenYuksege().click({force:true});
 })
 
 Then('fiyatin dusukten yuksege oldugunu dogrula',() => {

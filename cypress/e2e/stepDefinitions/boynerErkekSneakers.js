@@ -1,4 +1,5 @@
 import { Given, When, Then, And, Scenario } from "cypress-cucumber-preprocessor/steps";
+import { boynerMan } from "../../pages/boynerMan";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
@@ -20,33 +21,31 @@ Given('Go to Boyner', () => {
 });
 
 And ('Click on user icon', () =>{
-    cy.get(':nth-child(1) > .header-top_cardIcon__CBiyn > .sc-fqkvVR').click()
+    boynerMan.elements.userIcon().click()
 })
 
 
 And ('enter email address', () =>{
-    cy.get("input[placeholder='E-posta adresin") .should('be.visible', { timeout: 50000 }, {force: true});
-    cy.get("input[placeholder='E-posta adresin").type(data.email)
+   boynerMan.login(data.email, data.password)
 })
 
 And ('enter password', () =>{
-    cy.get(':nth-child(2) > :nth-child(1) > .input_inputGrid__UFWmw') .should('be.visible', { timeout: 50000 }, {force: true});
-    cy.get(':nth-child(2) > :nth-child(1) > .input_inputGrid__UFWmw').type(data.password)
+   
 })
 
 And ('Click on Giriş Yap Button', () =>{
-    cy.get("button[class='login-button_box__dnyuU login-form_loginSubmitButton__PhqyF").click()
+    boynerMan.elements.girisYap().click()
 })
 
 When('erkek menusune tikla',() => {
 
-    cy.get(':nth-child(2) > .mega-menu_gift__ccvMi') .trigger('mouseover')
+    boynerMan.elements.erkekMenu().trigger('mouseover')
     
 });
 
 
 And('sneakers sec',() => {
-    cy.get('a[href="/erkek-spor-ayakkabi-modelleri-c-200402"] h3:contains("Sneakers")').should('be.visible', { timeout: 50000 });
+   boynerMan.elements.sneaker().should('be.visible', { timeout: 50000 });
     cy.wait(3000, {force:true})
     cy.get('a[href="/erkek-spor-ayakkabi-modelleri-c-200402"] h3:contains("Sneakers")').click({force:true});
    

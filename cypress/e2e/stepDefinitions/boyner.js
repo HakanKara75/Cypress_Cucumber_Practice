@@ -1,23 +1,35 @@
 import { Given, When, Then, And, Scenario } from "cypress-cucumber-preprocessor/steps";
+import { boynerMan } from "../../pages/boynerMan";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
 })
 
-Given('Boyner sitesine git', () => {
-    cy.visit('https://www.boyner.com.tr')
-});
+let data;
+before(() => {
+    //fixture klasorundan boynerData dosyasinda olusturulan datalari okumak icin
+    cy.fixture("boynerErkek").then(function (fixtureData) {
+        data = fixtureData;
+       
+    })
+})
+
+
+Given('Go to Boyner', () => {
+cy.visit(data.url)
+})
 
 When('arama kutusuna {string} yaz', (searchText)=>{
-    cy.get('.header-top_headerTopSearchInput__hZ7mw').type(searchText)
+    cy.wait(3000, {force:true})
+   boynerMan.sendKeySearchBox(searchText)
 })
 
 Then('sonuca tikla', ()=>{
-    cy.get('b').click()
+    boynerMan.elements.result().click()
 })
 
 And('arama sonucunda iki binden fazla sonuc oldugunu doğrula',()=>{
-    cy.get('.product-list_total__TvMCW').invoke('text').then((text) => {
+    boynerMan.elements.resultList().invoke('text').then((text) => {
       
         // Text içindeki rakamları alın ve gereksiz karakterleri temizleyin
         const total = parseInt(text.replace(/\D/g, ''));
