@@ -7,19 +7,25 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+//cy.clickIfVisible('locate')  bunu da stepdef e ekleriz. tirnak icine locate veririz.
+
+Cypress.Commands.add("verifyTextInElements", (elementLocator, textToVerify, textToVerify2) => {
+  const normalizedText = textToVerify.toLowerCase();
+  const normalizedText2 = textToVerify2.toLowerCase();
+
+  cy.get(elementLocator)
+    .should("be.visible", { timeout: 10000 })
+    .each(($element) => {
+      cy.wrap($element)
+        .invoke("text")
+        .then((elementText) => {
+          const normalizedElementText = elementText.toLowerCase();
+          cy.log(normalizedElementText);
+          expect(normalizedElementText).to.satisfy((text) => {
+            // İstenen iki metni içeren kontrol
+            return text.includes(normalizedText) || text.includes(normalizedText2);
+          });
+        });
+    });
+});

@@ -1,7 +1,6 @@
 class Parameterizing{
 
 
-
     visit(){
         cy.visit("https://www.pazarama.com/");
     }
