@@ -21,9 +21,9 @@ import './commands'
 
 //xhr lari gizlemek icin
 const app=window.top;
-if(!app.document.head.querySelector(['data-hide-command-log-request', 'data-hide-command]')){
+if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.document.head.querySelector('[data-hide-command]')) {
     const style= app.document.createElement('style');
     style.innerHTML='.command-name-request, .command-name-xhr {display: none}';
-    style.setAtribute('data-hide-command-log-request', '');
+    style.setAttribute('data-hide-command-log-request', '');
     app.document.head.appendChild(style);
 }
