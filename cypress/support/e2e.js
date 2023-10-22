@@ -18,3 +18,12 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+//xhr lari gizlemek icin
+const app=window.top;
+if(!app.document.head.querySelector(['data-hide-command-log-request', 'data-hide-command]')){
+    const style= app.document.createElement('style');
+    style.innerHTML='.command-name-request, .command-name-xhr {display: none}';
+    style.setAtribute('data-hide-command-log-request', '');
+    app.document.head.appendChild(style);
+}
