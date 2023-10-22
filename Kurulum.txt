@@ -17,10 +17,6 @@ npmjs.com sitesinden drag-drop plugin indir : npm install --save-dev @4tw/cypres
     kodu terminale yapistir
     import '@4tw/cypress-drag-drop' kodunu e2e.js dosyasina yapistir
 
-file upload için
- https://www.npmjs.com/package/cypress-file-upload sitesinden 
-    npm install --save-dev cypress-file-upload kodunu terminale yazariz
-
 CUCUMBER İÇİN
 1) https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
 npm install --save-dev cypress-cucumber-preprocessor alip terminale yapıştır. install et.
@@ -106,3 +102,15 @@ bu dosyadan veri cekecek diger dosyalarin en ustune su kod yazilir:
 import { boynerMan } from "../../pages/boynerMan";
 
 sonrasinda sayfa icinde olusturulan boynerMan objesi ile oradan veriler ismi ile cekilir.
+
+12) file-upload icin
+
+ https://www.npmjs.com/package/cypress-file-upload sitesinden 
+    npm install --save-dev cypress-file-upload kodunu terminale yazariz
+
+    commands.js dosyasina
+    import 'cypress-file-upload'
+    yazariz
+
+    file-upload yapilan dosyada kod soyledir:
+     cy.get('#fine-uploader-gallery > .qq-uploader-selector > .qq-upload-button-selector > input').attachFile('junit.png', { fileContent: 'fixtures/junit.png' });
