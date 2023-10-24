@@ -129,3 +129,6 @@ sonrasinda sayfa icinde olusturulan data objesi ile oradan veriler ismi ile ceki
 
     file-upload yapilan dosyada kod soyledir:
      cy.get('#fine-uploader-gallery > .qq-uploader-selector > .qq-upload-button-selector > input').attachFile('junit.png', { fileContent: 'fixtures/junit.png' });
+
+7) commands.js dosyasi function olusturmak icindir. Cypress.Commands.add("xxxxx") seklinde function tanimlama baslar.
+xxxxx yerine function a verilecek isim girilir. Verilen isim baska bir sayfada cy.xxxxxx seklinde import etmeden kullanilir.
