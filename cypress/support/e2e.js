@@ -27,3 +27,4 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.
     style.setAttribute('data-hide-command-log-request', '');
     app.document.head.appendChild(style);
 }
+

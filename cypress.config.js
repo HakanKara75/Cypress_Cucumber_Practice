@@ -3,13 +3,14 @@ const cucumber = require('cypress-cucumber-preprocessor').default
 
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
-  
+  projectId: "4jxc4s",
 
   e2e: {
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber());
       require('cypress-mochawesome-reporter/plugin')(on)
 
+     
     },
        //videolari true yaparsak kayit eder
     "video": false,
