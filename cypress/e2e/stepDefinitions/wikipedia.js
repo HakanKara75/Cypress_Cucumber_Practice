@@ -12,7 +12,7 @@ When ('I type {string} on the search box And I click on search button', (searchT
  Then('the URL should be {string}',(urlText)=>{
 
 
-    cy.url().should('include', urlText); 
+    cy.url().should('eq', urlText); 
 })
 
 And('I want to see an image under title {string} on the right column',()=>{
@@ -20,10 +20,10 @@ And('I want to see an image under title {string} on the right column',()=>{
 
 })
 
-And('I want to read information about {string} {string} {string}on the right column',(born, died, education)=>{
-    cy.get('.biography').should('include', born)
-    cy.get('.biography').should('include', died)
-    cy.get('.biography').should('include', education)
+And('I want to read information about {string} {string} {string} on the right column',(born, died, education)=>{
+    cy.get('.biography').should('include.text', born)
+    cy.get('.biography').should('include.text', died)
+    cy.get('.biography').should('include.text', education)
 
 })
 
