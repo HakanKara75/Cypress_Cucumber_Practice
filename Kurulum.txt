@@ -29,8 +29,13 @@ npx cypress open
 
 4) sonra cypress kurmak icin:
 npm install cypress --save-dev
-npm i -D cypress cypress-cucumber-preprocessor
 npm install --save-dev cypress-cucumber-preprocessor
+
+Bunu bilgisayardan kaldırmka için : 
+npm uninstall cypress --save-dev
+npm uninstall -D cypress-cucumber-preprocessor
+npm uninstall --save-dev cypress-cucumber-preprocessor
+
 
 
 6) CUCUMBER KURULUMU İÇİN
@@ -52,16 +57,14 @@ asagidaki kismi degistiririz
 
 9) Cucumber yapılandırma icin
  cypress.config.js dosyasina 
-const { defineConfig } = require("cypress");
 const cucumber = require('cypress-cucumber-preprocessor').default 
+const { defineConfig } = require('cypress');
+
 module.exports = defineConfig({
-  reporter: 'cypress-mochawesome-reporter',
-  
 
   e2e: {
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber());
-      require('cypress-mochawesome-reporter/plugin')(on);
       
     },
 
@@ -112,10 +115,33 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     import 'cypress-file-upload'
     yazariz
 
+    Bu plugini kaldırmak için: npm remove --dev cypress-file-upload
+
 13) Mochawesome adlı bir rapor kurmak için
  https://www.npmjs.com/package/cypress-mochawesome-reporter den 
 npm i --save-dev cypress-mochawesome-reporter komutu ile plugin yükle
 
+ cypress.config.js dosyasina şunu ekle:
+
+module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  
+
+  e2e: {
+    setupNodeEvents(on, config) {
+      on('file:preprocessor', cucumber());
+      require('cypress-mochawesome-reporter/plugin')(on);
+      
+    },
+
+    specPattern: "**/*.feature",
+  },
+});
+
+Bu plugin i kaldırmak için: npm uninstall -g cypress-mochawesome-reporter
+Report çalıştırmak için npx cypress run --spec cypress\e2e\scenarioSteps\apiTest.feature   yazarız
+npx cypress run --spec cypress\e2e\scenarioSteps\apiTest.feature --browser chrome --headed  ile chrome ile head ile çalıştırır
+npx cypress run --spec cypress\e2e\scenarioSteps\apiTest.feature --browser edge    edge ile çalıştırır
 ------------------------------------------------------------------
 /******---------------------------------------------------------------/
 
