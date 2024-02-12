@@ -64,6 +64,7 @@ Then('fiyatin dusukten yuksege oldugunu dogrula',() => {
     
     cy.get('div[class="product-price_checkPrice__NMY9e"]').invoke('text').then((text) => {
         cy.log(text);
+        cy.log('fiyat kontrol testi basladi')
       });
     cy.get('div[class="product-price_checkPrice__NMY9e"]')
     .then(($elements) => {
